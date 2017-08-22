@@ -27,6 +27,10 @@ public class GameManager {
             player.decrementLives();
         }
     }
+    public void incrementLife () {
+        player.incrementLife();
+    }
+
 
     public void constructGame() {
         //If item was hit

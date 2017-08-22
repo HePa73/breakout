@@ -30,6 +30,10 @@ public class Player {
 
     }
 
+    public void incrementLife () {
+        setLives(getLives() + 1);
+    }
+
     public Color getColor() {
         return color;
     }

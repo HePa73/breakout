@@ -1,14 +1,13 @@
 package ccamp.blocks;
 
-
 import java.awt.*;
 
-public class Yellow extends Block{
+public class Yellow extends Block {
 
     private int sizeBoost;
 
-    public yellow(int posX, int posY, int HP, Color color, int sizeBoost) {
-        super(posX, posY, HP, color);
+    public Yellow(int posX, int posY, int HP, Color color, int sizeBoost, int width, int height, ccamp.blocks.Block.BlockType type) {
+        super(posX, posY, HP, color, width, height, type);
         this.sizeBoost = sizeBoost;
     }
 

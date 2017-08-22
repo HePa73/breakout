@@ -2,7 +2,7 @@ package ccamp.blocks;
 
 import java.awt.*;
 
-public abstract class Blocks {
+public abstract class Block {
     public enum BlockType{
         BALL_SPEED_UP, BALL_SPEED_DOWN, PLAYER_SIZE_UP, PLAYER_SIZE_DOWN;
     }
@@ -15,7 +15,7 @@ public abstract class Blocks {
     private int height; //Höhe
     private BlockType type; //Blockart
 
-    public blocks(int posX, int posY, int HP, Color color, int width, int height, BlockType type) {
+    public Block(int posX, int posY, int HP, Color color, int width, int height, BlockType type) {
         this.posX = posX;
         this.posY = posY;
         this.HP = HP;

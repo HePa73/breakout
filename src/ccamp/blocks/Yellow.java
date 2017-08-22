@@ -7,8 +7,8 @@ public class Yellow extends Block{
 
     private int sizeBoost;
 
-    public yellow(int posX, int posY, int HP, Color color, int sizeBoost) {
-        super(posX, posY, HP, color);
+    public yellow(int posX, int posY, int HP, Color color, int sizeBoost, int width, int height, BlockType type) {
+        super(posX, posY, HP, color, width, height, type);
         this.sizeBoost = sizeBoost;
     }
 

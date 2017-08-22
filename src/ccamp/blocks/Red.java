@@ -6,9 +6,9 @@ public class Red extends Block {
 
     private int speedHigher;
 
-    public red(int posX, int posY, int HP, Color farbe, int speedBoost) {
-        super(posX, posY, HP, farbe);
-        this.speedHigher = speedBoost;
+    public red(int posX, int posY, int HP, Color farbe, int speedHigher, int width, int height, BlockType type) {
+        super(posX, posY, HP, farbe, width, height, type);
+        this.speedHigher = speedHigher;
     }
 
     @Override

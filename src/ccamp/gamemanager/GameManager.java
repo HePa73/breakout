@@ -2,14 +2,14 @@ package ccamp.gamemanager;
 
 import ccamp.Ball;
 import ccamp.Player.Player;
-import ccamp.blocks.Blocks;
+import ccamp.blocks.Block;
 
 import java.util.List;
 
 public class GameManager {
     Player player;
     List<Ball> ballList;
-    List<Blocks> blockList;
+    List<Block> blockList;
 
     int score;
     int maxPlayerSpeed;

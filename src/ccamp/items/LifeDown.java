@@ -6,6 +6,7 @@ public class LifeDown extends Items {
 
     @Override
     public void applyEffect(GameManager manage) {
+        manage.decrementLife();
 
     }
 }

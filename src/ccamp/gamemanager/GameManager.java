@@ -22,8 +22,10 @@ public class GameManager {
     }
 
     public void decrementLife() {
-
-        player.decrementLives();
+        // decrement life if player is not already dead
+        if (!isGameOver()) {
+            player.decrementLives();
+        }
     }
 
     public void constructGame() {

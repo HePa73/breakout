@@ -3,7 +3,7 @@ package ccamp.blocks;
 
 import java.awt.*;
 
-public class yellow extends blocks {
+public class Yellow extends Block{
 
     private int sizeBoost;
 

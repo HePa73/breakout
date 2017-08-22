@@ -2,7 +2,7 @@ package ccamp.blocks;
 
 import java.awt.*;
 
-public class blue extends blocks {
+public class Blue extends Block{
 
     private int sizeLower;
 

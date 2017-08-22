@@ -2,7 +2,7 @@ package ccamp.blocks;
 
 import java.awt.*;
 
-public class green extends blocks{
+public class Green extends Block{
 
     private int speedLower;
 

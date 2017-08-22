@@ -2,17 +2,17 @@ package ccamp.blocks;
 
 import java.awt.*;
 
-public class red extends blocks {
+public class Red extends Block {
 
-    private int speedBoost;
+    private int speedHigher;
 
     public red(int posX, int posY, int HP, Color farbe, int speedBoost) {
         super(posX, posY, HP, farbe);
-        this.speedBoost = speedBoost;
+        this.speedHigher = speedBoost;
     }
 
     @Override
     public void applyEffect(){
-        //GameManager.addBallSpeed(this.speedBoost);
+        //GameManager.addBallSpeed(this.speedHigher);
     }
 }

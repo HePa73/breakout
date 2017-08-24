@@ -6,6 +6,7 @@ import ccamp.blocks.*;
 import ccamp.items.*;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -52,6 +53,10 @@ public class GameManager {
     int maxPlayerWidth;
     int minPlayerWidth;
 
+    public GameManager() {
+        this.ballList = new LinkedList<>();
+
+    }
 
     public void decrementLife() {
         // Decrement life if player is not already dead
@@ -126,17 +131,12 @@ public class GameManager {
         itemList.add(item);
     }
 
-    public Player spawnPlayer() {
-        // Spawns player at playerSpawnX and playerSpawnY
-        // Player is blue, has playerSpawnSpeed, playerSpawnLength, playerSpawnHeight and playerSpawnLives
-        Player player = new Player(Color.BLUE, playerSpeed, playerSpawnLength, playerHeight, playerSpawnLives, playerSpawnY, playerSpawnX);
-
-        return player;
-    }
-
     public void constructGame() {
         spawnNewBall();
-        player = spawnPlayer();
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
     }
 
     public boolean isGameOver() {

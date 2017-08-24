@@ -1,8 +1,14 @@
 package ccamp.Player;
 
-import java.awt.*;
+import ccamp.Renderable;
+import ccamp.render.renderinfo.RectRenderInfo;
+import ccamp.render.renderinfo.RenderInfo;
 
-public class Player {
+import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Player implements Renderable{
     private Color color;
     private int speed;
     private int width;
@@ -86,5 +92,13 @@ public class Player {
 
     public void setX(int x) {
         this.x = x;
+    }
+
+    @Override
+    public List<RenderInfo> getRenderInfo() {
+        List<RenderInfo> renderInfos = new LinkedList<>();
+        RectRenderInfo rectRenderInfo = new RectRenderInfo(this.x, this.x, this.color, this.width, this.length);
+        renderInfos.add(rectRenderInfo);
+        return renderInfos;
     }
 }

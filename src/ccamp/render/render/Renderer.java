@@ -12,11 +12,11 @@ import java.util.List;
 public class Renderer {
     List<Renderable> renderable;
 
-    public Renderer(Canvas canvas) {
+    public Renderer() {
         this.renderable = new LinkedList<>();
     }
 
-    public void renderScene(List<Renderable> renderable){
+    public void renderScene(Canvas canvas){
         // Iterate through list of renderables
         for (Renderable renderable1: renderable){
             List<RenderInfo> renderInfos= renderable1.getRenderInfo();
@@ -24,14 +24,19 @@ public class Renderer {
             for (RenderInfo renderInfo: renderInfos){
                 if (renderInfo instanceof RectRenderInfo){
                     RectRenderInfo s = (RectRenderInfo) renderInfo;
-
+                    this.rectRenderInfo(canvas, s);
                 }
             }
 
         }
+        canvas.repaint();
     }
 
     private void rectRenderInfo(Canvas canvas, RectRenderInfo r){
-        canvas.getImage().getGraphics().drawRect(r.getX(), r,getY(), r.getWidth(), r.getHeight());
+        canvas.getImage().getGraphics().drawRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+    }
+
+    public void addRenderable(Renderable renderable){
+        this.renderable.add(renderable);
     }
 }

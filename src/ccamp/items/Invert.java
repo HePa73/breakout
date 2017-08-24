@@ -7,6 +7,6 @@ public class Invert extends Items {
 
     @Override
     public void applyEffect(GameManager manage) {
-
+        manage.invertPlayerSpeed();
     }
 }

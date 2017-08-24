@@ -6,7 +6,7 @@ public class OvalRenderInfo extends RawRenderInfo{
 
     private int ballradius;
 
-    public OvalRenderInfo(int x, int y, Color color) {
+    public OvalRenderInfo(int x, int y, Color color, int ballradius) {
         super(x, y,color);
         this.ballradius = ballradius;
     }

@@ -17,7 +17,7 @@ public abstract class Block {
     private int height; //Höhe
     private BlockType type; //Blockart
 
-    public Block(int posX, int posY, int HP, Color color, int width, int height, BlockType type) {
+    public Block(int posX, int posY, int width, int height, int HP, Color color,  BlockType type) {
         this.posX = posX;
         this.posY = posY;
         this.HP = HP;

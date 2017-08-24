@@ -4,11 +4,10 @@ import java.awt.*;
 
 public class Red extends Block {
 
-    private int speedHigher;
+    private final int speedHigher = 5;
 
-    public Red(int posX, int posY, int HP, Color farbe, int speedHigher, int width, int height, BlockType type) {
-        super(posX, posY, HP, farbe, width, height, type);
-        this.speedHigher = speedHigher;
+    public Red(int posX, int posY, int width, int height, BlockType type) {
+        super(posX, posY,width, height, 3, Color.RED, type);
     }
 
     @Override

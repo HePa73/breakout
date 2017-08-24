@@ -9,8 +9,8 @@ import java.awt.image.ImageObserver;
 public class Canvas extends JComponent {
     private BufferedImage image;
 
-    public Canvas(){
-        this.image = new BufferedImage(200, 200,
+    public Canvas(int width, int height){
+        this.image = new BufferedImage(width, height,
                 BufferedImage.TYPE_BYTE_INDEXED);
     }
     @Override

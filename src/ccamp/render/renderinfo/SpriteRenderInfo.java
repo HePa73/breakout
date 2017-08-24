@@ -8,5 +8,6 @@ public class SpriteRenderInfo extends RenderInfo{
 
     public SpriteRenderInfo(int x, int y) {
         super(x, y);
+        this.sprite = sprite;
     }
 }

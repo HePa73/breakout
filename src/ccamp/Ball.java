@@ -1,13 +1,13 @@
 package ccamp;
 
-import ccamp.render.renderinfo.RectRenderInfo;
+import ccamp.render.renderinfo.OvalRenderInfo;
 import ccamp.render.renderinfo.RenderInfo;
 
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Ball {
+public class Ball implements Renderable{
     private int x;
     private int y;
     private int sx;
@@ -70,5 +70,14 @@ public class Ball {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public List<RenderInfo> getRenderInfo() {
+        List<RenderInfo> renderInfos = new LinkedList<>();
+        OvalRenderInfo oval = new OvalRenderInfo(400,400,Color.RED,30);
+
+        renderInfos.add(oval);
+        return renderInfos;
     }
 }

@@ -5,17 +5,15 @@ import java.awt.*;
 public class Player {
     private Color color;
     private int speed;
-    private int score;
     private int width;
     private int length;
     private int lives;
     private int y;
     private int x;
 
-    public Player(Color color, int speed, int score, int width, int length, int lives, int y, int x) {
+    public Player(Color color, int speed,int width, int height, int lives, int y, int x) {
         this.color = color;
         this.speed = speed;
-        this.score = score;
         this.width = width;
         this.length = length;
         this.lives = lives;
@@ -48,14 +46,6 @@ public class Player {
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 
     public int getWidth() {

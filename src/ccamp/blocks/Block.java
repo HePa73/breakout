@@ -7,6 +7,8 @@ public abstract class Block {
         BALL_SPEED_UP, BALL_SPEED_DOWN, PLAYER_SIZE_UP, PLAYER_SIZE_DOWN;
     }
 
+    // Set vars
+
     private int posX; //Position X
     private int posY; //Position y
     private int HP;   //HealthPoints

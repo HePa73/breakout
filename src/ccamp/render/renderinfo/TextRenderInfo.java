@@ -6,11 +6,12 @@ import javax.swing.text.StyledEditorKit;
 
 public class TextRenderInfo extends RenderInfo {
 
-    private int fontSize;
+    private int fontSize ;
     private FontFamily fontFamily;
 
     public TextRenderInfo(int x, int y) {
         super(x, y);
-
-    }
+        this.fontSize = fontSize;
+        this.fontFamily = fontFamily;
+}
 }

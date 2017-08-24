@@ -19,15 +19,13 @@ public class Renderer {
     public void renderScene(Canvas canvas){
         // Iterate through list of renderables
         for (Renderable renderable1: renderable){
-            List<RenderInfo> renderInfos= renderable1.getRenderInfo();
+            List<RenderInfo> topRenderInfos= renderable1.getRenderInfo();
             // Iterate through sub lists
-            for (RenderInfo renderInfo: renderInfos){
-                if (renderInfo instanceof RectRenderInfo){
+            for (RenderInfo renderInfo: topRenderInfos)
+                if (renderInfo instanceof RectRenderInfo) {
                     RectRenderInfo s = (RectRenderInfo) renderInfo;
                     this.rectRenderInfo(canvas, s);
                 }
-            }
-
         }
         canvas.repaint();
     }

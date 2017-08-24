@@ -55,6 +55,7 @@ public class GameManager {
 
     public GameManager() {
         this.ballList = new LinkedList<>();
+        List <Block> blocklist;
 
     }
 
@@ -68,28 +69,27 @@ public class GameManager {
         player.incrementLife();
     }
 
-    public void spawnNewBlock(Block.BlockType blockType, int posX, int posY, int width, int height){
+    public Block spawnNewBlock(Block.BlockType blockType, int posX, int posY, int width, int height){
         //Spawns new block with given type and adds it to "blockList"
         // Adjust spawn settings with arguments which should be self explaining
         Block block = null;
         switch (blockType) {
             case BALL_SPEED_UP:
                 block = new Red(posX, posY, width, height, Block.BlockType.BALL_SPEED_UP);
-                break;
+                return block;
             case BALL_SPEED_DOWN:
                 block = new Green(posX, posY, width, height, Block.BlockType.BALL_SPEED_DOWN);
-                break;
+                return block;
             case PLAYER_SIZE_UP:
                 block = new Yellow(posX, posY, width, height, Block.BlockType.PLAYER_SIZE_UP);
-                break;
+                return block;
             case PLAYER_SIZE_DOWN:
                 block = new Blue(posX, posY, width, height, Block.BlockType.PLAYER_SIZE_DOWN);
-                break;
+                return block;
             default:
                 System.out.println("Please use one of the defined blocktypes");
-                break;
+                return block;
         }
-        blockList.add(block);
     }
 
     public void spawnNewBall() {

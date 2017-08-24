@@ -1,6 +1,11 @@
 package ccamp;
 
+import ccamp.render.renderinfo.RectRenderInfo;
+import ccamp.render.renderinfo.RenderInfo;
+
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Ball {
     private int x;

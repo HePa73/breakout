@@ -141,7 +141,6 @@ public class GameManager {
     }
 
     public void constructGame() {
-
     }
 
     public void setPlayer(Player player){

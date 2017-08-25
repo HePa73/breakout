@@ -52,19 +52,14 @@ public class Main {
 
         placeBlocks(manage, window);
 
-        Player player = new Player(Color.BLUE, 10, 100, 20, 3, 700, 100);
+        Player player = new Player(Color.BLUE, 30, 100, 20, 3, 700, 100);
         manage.setPlayer(player);
 
         Renderer renderer = new Renderer();
 
-        List<Renderable> renderables = manage.getRenderables();
-        Ball ball = new Ball(400,400,15,15,50,Color.RED);
+        Ball ball = new Ball(400,400,10, 10,20, Color.GREEN);
 
         manage.addBallToList(ball);
-
-
-
-        renderer.renderScene(window.getCanvas(), renderables);
 
         window.addKeyListener(new KeyAdapter() {
             @Override
@@ -90,7 +85,7 @@ public class Main {
             manage.updateGame();
             List<Renderable> RenderList = new LinkedList<>();
             RenderList = manage.getRenderables();
-            renderer.renderScene(window.getCanvas(), renderables);
+            renderer.renderScene(window.getCanvas(), RenderList);
 
             try {
                 Thread.sleep(10);

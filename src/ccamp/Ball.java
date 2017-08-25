@@ -75,7 +75,7 @@ public class Ball implements Renderable{
     @Override
     public List<RenderInfo> getRenderInfo() {
         List<RenderInfo> renderInfos = new LinkedList<>();
-        OvalRenderInfo oval = new OvalRenderInfo(this.x, this.y, Color.RED,this.radius);
+        OvalRenderInfo oval = new OvalRenderInfo(this.x, this.y, this.color,this.radius);
 
         renderInfos.add(oval);
         return renderInfos;

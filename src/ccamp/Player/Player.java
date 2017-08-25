@@ -12,7 +12,7 @@ public class Player implements Renderable{
     private Color color;
     private int speed;
     private int width;
-    private int length;
+    private int height;
     private int lives;
     private int y;
     private int x;
@@ -21,7 +21,7 @@ public class Player implements Renderable{
         this.color = color;
         this.speed = speed;
         this.width = width;
-        this.length = height;
+        this.height = height;
         this.lives = lives;
         this.y = y;
         this.x = x;
@@ -62,12 +62,12 @@ public class Player implements Renderable{
         this.width = width;
     }
 
-    public int getLength() {
-        return length;
+    public int getHeight() {
+        return height;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getLives() {
@@ -97,7 +97,7 @@ public class Player implements Renderable{
     @Override
     public List<RenderInfo> getRenderInfo() {
         List<RenderInfo> renderInfos = new LinkedList<>();
-        RectRenderInfo rectRenderInfo = new RectRenderInfo(this.x, this.y, this.color, this.width, this.length);
+        RectRenderInfo rectRenderInfo = new RectRenderInfo(this.x, this.y, this.color, this.width, this.height);
         renderInfos.add(rectRenderInfo);
         return renderInfos;
     }

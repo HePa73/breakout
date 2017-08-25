@@ -34,6 +34,7 @@ public class Main {
         for (int y = 0; isInCanvasY(y, 400, window); y += 40) {
             for (int x = 0; isInCanvasX(x, 0, window); x += 110) {
                 Block block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 100, 20);
+                manage.addToBlocklist(block);
             }
         }
     }
@@ -56,7 +57,8 @@ public class Main {
 
     public static void main(String[] args) {
         GameManager manage = new GameManager();
-        manage.constructGame();
+
+        manage.updateGame();
         Window window = new Window();
 
         placeBlocks(manage, window);
@@ -67,12 +69,9 @@ public class Main {
         Renderer renderer = new Renderer();
         renderer.addRenderable(player);
         addListToRender(manage.getBlockList(), renderer);
-        Ball ball = new Ball(400,400,5,5,50,Color.RED);
+        Ball ball = new Ball(400,400,5,5,30,Color.RED);
 
         renderer.addRenderable(ball);
-
-        Block block1 = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, 100, 400, 100, 100);
-
 
         renderer.renderScene(window.getCanvas());
 

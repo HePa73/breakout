@@ -5,7 +5,6 @@ import ccamp.Player.Player;
 import ccamp.blocks.*;
 import ccamp.items.*;
 
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -140,7 +139,27 @@ public class GameManager {
         itemList.add(item);
     }
 
-    public void constructGame() {
+    public boolean isBlockCollision(int x1, int y1, int x2, int y2, Block block, Ball ball){
+        if (x1 < x2 + block.getWidth() && x2 + ball.getRadius()*2 > x2 && y1 < y2 + block.getWidth() && y1 + ball.getRadius()*2 > y2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean isPlayerCollision(int x1, int y1, int x2, int y2, Player player, Ball ball) {
+        if (x1 < x2 + player.getWidth() && x2 + ball.getRadius() * 2 > x2 && y1 < y2 + player.getWidth() && y1 + player.getWidth() > y2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void updateGame() {
+        for (Ball ball: ballList){
+            if 
+        }
     }
 
     public void setPlayer(Player player){

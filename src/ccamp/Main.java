@@ -68,6 +68,9 @@ public class Main {
 
         Renderer renderer = new Renderer();
         renderer.addRenderable(player);
+
+        List<Block> blockList = manage.updateGame();
+
         addListToRender(manage.getBlockList(), renderer);
         Ball ball = new Ball(400,400,5,5,30,Color.RED);
 

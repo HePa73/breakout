@@ -4,6 +4,7 @@ import ccamp.Ball;
 import ccamp.Player.Player;
 import ccamp.blocks.*;
 import ccamp.items.*;
+import ccamp.render.render.Renderer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -139,8 +140,8 @@ public class GameManager {
         itemList.add(item);
     }
 
-    public boolean isBlockCollision(int x1, int y1, int x2, int y2, Block block, Ball ball){
-        if (x1 < x2 + block.getWidth() && x2 + ball.getRadius()*2 > x2 && y1 < y2 + block.getWidth() && y1 + ball.getRadius()*2 > y2){
+    public boolean isBlockCollision(Block block, Ball ball){
+        if (player.getX() < ball.getX() + ball.getRadius() * 2 && player.getX() + player.getWidth() > ball.getX() && player.getY() < ball.getY() + ball.getRadius() * 2 && player.getY() + player.getWidth() > ball.getY()){
             return true;
         }
         else{
@@ -148,18 +149,50 @@ public class GameManager {
         }
     }
 
-    public boolean isPlayerCollision(int x1, int y1, int x2, int y2, Player player, Ball ball) {
-        if (x1 < x2 + player.getWidth() && x2 + ball.getRadius() * 2 > x2 && y1 < y2 + player.getWidth() && y1 + player.getWidth() > y2) {
+    public boolean isPlayerCollision(Player player, Ball ball) {
+        if (player.getX() < ball.getX() + player.getWidth() && player.getX() + ball.getRadius() * 2 > ball.getX() && player.getY() < (ball.getRadius() * 2 + player.getWidth()) && player.getY() + player.getWidth() > ball.getY()) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void updateGame() {
+    public void negateBallSY(Ball ball){
+        ball.setSy(-ball.getSy());
+    }
+
+    public void negateBallSX(Ball ball){
+        ball.setSx(-ball.getSx());
+    }
+
+    public List<Block> updateGame() {
         for (Ball ball: ballList){
-            if 
+            if (ball.getX() >= 1200){
+                negateBallSX(ball);
+            }
+            if (ball.getX() <= 0){
+                negateBallSX(ball);
+            }
+            if (ball.getY() <=0){
+                negateBallSY(ball);
+            }
+            if (ball.getY() > 1000){
+                negateBallSY(ball);
+            }
+            // Check for blocks collisions
+            List<Block> removeFromBlocklist = new LinkedList<>();
+            for (Block currentBlock: blockList){
+                if (isBlockCollision(currentBlock, ball)){
+                    removeFromBlocklist.add(currentBlock);
+                }
+            }
+            // Remove hit blocks from render list
+            for (Block removeBlock: removeFromBlocklist){
+                blockList.remove(removeBlock);
+            }
+
         }
+        return blockList;
     }
 
     public void setPlayer(Player player){

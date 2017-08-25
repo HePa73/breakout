@@ -17,8 +17,12 @@ public class Main {
         Player player = new Player(Color.BLUE, 10, 100, 20, 3, 100, 100);
         manage.setPlayer(player);
 
+        Ball ball = new Ball(400,400,5,5,50,Color.RED);
+
         Renderer renderer = new Renderer();
         renderer.addRenderable(player);
+        renderer.addRenderable(ball);
+
 
         renderer.renderScene(window.getCanvas());
 

@@ -2,6 +2,7 @@ package ccamp.render.render;
 
 import ccamp.Renderable;
 import ccamp.render.Canvas;
+import ccamp.render.renderinfo.OvalRenderInfo;
 import ccamp.render.renderinfo.RawRenderInfo;
 import ccamp.render.renderinfo.RectRenderInfo;
 import ccamp.render.renderinfo.RenderInfo;
@@ -26,14 +27,23 @@ public class Renderer {
                     RectRenderInfo s = (RectRenderInfo) renderInfo;
                     this.rectRenderInfo(canvas, s);
                 }
+                if (renderInfo instanceof OvalRenderInfo) {
+                    OvalRenderInfo s = (OvalRenderInfo) renderInfo;
+                    this.ovalRenderInfo(canvas, s);
+                }
             }
 
         }
         canvas.repaint();
     }
 
+
     private void rectRenderInfo(Canvas canvas, RectRenderInfo r){
         canvas.getImage().getGraphics().drawRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+    }
+
+    private void ovalRenderInfo(Canvas canvas, OvalRenderInfo r){
+        canvas.getImage().getGraphics().fillOval(r.getX(), r.getY(), r.getBallradius(), r.getBallradius());
     }
 
     public void addRenderable(Renderable renderable){

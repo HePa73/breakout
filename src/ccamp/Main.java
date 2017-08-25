@@ -8,6 +8,8 @@ import ccamp.render.Window;
 import ccamp.render.render.Renderer;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class Main {
     }
 
 
+
     public static void main(String[] args) {
         GameManager manage = new GameManager();
 
@@ -55,10 +58,42 @@ public class Main {
         Renderer renderer = new Renderer();
         List<Renderable> renderables = manage.getRenderables();
         Ball ball = new Ball(400,400,15,15,50,Color.RED);
-
+        manage.addBallToList(ball);
 
 
         renderer.renderScene(window.getCanvas(), renderables);
 
+        window.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                switch (e.getKeyChar()){
+                    case 'a' :
+                        if (player.getX()>10){
+                            player.setX(player.getX()-10);
+                        }
+                        break;
+                    case'd' :
+                        if (player.getX()<window.getWidth()-player.getWidth()){
+                            player.setX(player.getX()+10);
+                        }
+                        break;
+                }
+            }
+        });
+
+
+        while (true){
+            manage.updateGame();
+            List<Renderable> RenderList = new LinkedList<>();
+            RenderList = manage.getRenderables();
+            renderer.renderScene(window.getCanvas(), renderables);
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

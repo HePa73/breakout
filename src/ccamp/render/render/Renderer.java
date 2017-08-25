@@ -18,7 +18,10 @@ public class Renderer {
 
     public void renderScene(Canvas canvas, List<Renderable> renderable) {
         // Iterate through list of renderables
+
         Graphics2D graphics2D = canvas.getCanvasGraphics();
+        graphics2D.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
         for (Renderable renderable1 : renderable) {
             List<RenderInfo> topRenderInfos = renderable1.getRenderInfo();
             // Iterate through sub lists

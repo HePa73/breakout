@@ -159,7 +159,7 @@ public class GameManager {
 
     public void updateGame() {
         for (Ball ball: ballList){
-            if 
+
         }
     }
 

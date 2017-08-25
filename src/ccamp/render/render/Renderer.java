@@ -17,13 +17,13 @@ public class Renderer {
         this.renderable = new LinkedList<>();
     }
 
-    public void renderScene(Canvas canvas){
+    public void renderScene(Canvas canvas) {
         // Iterate through list of renderables
-        for (Renderable renderable1: renderable){
-            List<RenderInfo> renderInfos= renderable1.getRenderInfo();
+        for (Renderable renderable1 : renderable) {
+            List<RenderInfo> topRenderInfos = renderable1.getRenderInfo();
             // Iterate through sub lists
-            for (RenderInfo renderInfo: renderInfos){
-                if (renderInfo instanceof RectRenderInfo){
+            for (RenderInfo renderInfo : topRenderInfos) {
+                if (renderInfo instanceof RectRenderInfo) {
                     RectRenderInfo s = (RectRenderInfo) renderInfo;
                     this.rectRenderInfo(canvas, s);
                 }
@@ -32,11 +32,9 @@ public class Renderer {
                     this.ovalRenderInfo(canvas, s);
                 }
             }
-
+            canvas.repaint();
         }
-        canvas.repaint();
     }
-
 
     private void rectRenderInfo(Canvas canvas, RectRenderInfo r){
         canvas.getImage().getGraphics().drawRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
@@ -48,5 +46,9 @@ public class Renderer {
 
     public void addRenderable(Renderable renderable){
         this.renderable.add(renderable);
+    }
+
+    public void addRenderable(List<Renderable> renderable){
+        this.renderable.addAll(renderable);
     }
 }

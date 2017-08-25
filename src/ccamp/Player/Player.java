@@ -21,7 +21,7 @@ public class Player implements Renderable{
         this.color = color;
         this.speed = speed;
         this.width = width;
-        this.length = length;
+        this.length = height;
         this.lives = lives;
         this.y = y;
         this.x = x;
@@ -97,7 +97,7 @@ public class Player implements Renderable{
     @Override
     public List<RenderInfo> getRenderInfo() {
         List<RenderInfo> renderInfos = new LinkedList<>();
-        RectRenderInfo rectRenderInfo = new RectRenderInfo(this.x, this.x, this.color, this.width, this.length);
+        RectRenderInfo rectRenderInfo = new RectRenderInfo(this.x, this.y, this.color, this.width, this.length);
         renderInfos.add(rectRenderInfo);
         return renderInfos;
     }

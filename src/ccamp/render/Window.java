@@ -12,6 +12,7 @@ public class Window extends JFrame {
         this.add(canvas, BorderLayout.CENTER);
 
         this.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public Canvas getCanvas(){

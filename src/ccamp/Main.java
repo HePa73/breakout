@@ -8,6 +8,7 @@ import ccamp.render.Window;
 import ccamp.render.render.Renderer;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
@@ -39,21 +40,6 @@ public class Main {
         }
     }
 
-    public static void placeBlocks(GameManager manage) {
-        for(int y = 0; y != 1000; y += 100){
-            for(int x = 0; x != 1000; x += 100) {
-                Block block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 90, 10 );
-
-                manage.addToBlocklist(block);
-            }
-        }
-    }
-
-    public static void addListToRender(List<Block> blockList, Renderer renderer) {
-        for (Block block: blockList){
-            renderer.addRenderable(block);
-        }
-    }
 
     public static void main(String[] args) {
         GameManager manage = new GameManager();
@@ -67,16 +53,21 @@ public class Main {
         manage.setPlayer(player);
 
         Renderer renderer = new Renderer();
+<<<<<<< HEAD
         renderer.addRenderable(player);
 
         List<Block> blockList = manage.updateGame();
 
         addListToRender(manage.getBlockList(), renderer);
         Ball ball = new Ball(400,400,5,5,30,Color.RED);
+=======
+        List<Renderable> renderables = manage.getRenderables();
+        Ball ball = new Ball(400,400,15,15,50,Color.RED);
 
-        renderer.addRenderable(ball);
+>>>>>>> 723d4f8e89cb45ab1af5c81566019794e6ab7b40
 
-        renderer.renderScene(window.getCanvas());
+
+        renderer.renderScene(window.getCanvas(), renderables);
 
     }
 }

@@ -183,6 +183,7 @@ public class GameManager {
             List<Block> removeFromBlocklist = new LinkedList<>();
             for (Block currentBlock: blockList){
                 if (isBlockCollision(currentBlock, ball)){
+                    negateBallSY(ball);
                     removeFromBlocklist.add(currentBlock);
                 }
             }

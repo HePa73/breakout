@@ -23,4 +23,9 @@ public class Canvas extends JComponent {
     public BufferedImage getImage() {
         return image;
     }
+
+    public Graphics2D getCanvasGraphics() {
+        Graphics2D g = (Graphics2D)image.getGraphics();
+        return g;
+    }
 }

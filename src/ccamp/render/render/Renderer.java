@@ -7,48 +7,45 @@ import ccamp.render.renderinfo.RawRenderInfo;
 import ccamp.render.renderinfo.RectRenderInfo;
 import ccamp.render.renderinfo.RenderInfo;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Renderer {
-    List<Renderable> renderable;
 
     public Renderer() {
-        this.renderable = new LinkedList<>();
     }
 
-    public void renderScene(Canvas canvas) {
+    public void renderScene(Canvas canvas, List<Renderable> renderable) {
         // Iterate through list of renderables
+        Graphics2D graphics2D = canvas.getCanvasGraphics();
         for (Renderable renderable1 : renderable) {
             List<RenderInfo> topRenderInfos = renderable1.getRenderInfo();
             // Iterate through sub lists
             for (RenderInfo renderInfo : topRenderInfos) {
                 if (renderInfo instanceof RectRenderInfo) {
                     RectRenderInfo s = (RectRenderInfo) renderInfo;
-                    this.rectRenderInfo(canvas, s);
+                    this.rectRenderInfo(graphics2D, s);
                 }
                 if (renderInfo instanceof OvalRenderInfo) {
                     OvalRenderInfo s = (OvalRenderInfo) renderInfo;
-                    this.ovalRenderInfo(canvas, s);
+                    this.ovalRenderInfo(graphics2D, s);
                 }
             }
             canvas.repaint();
         }
     }
 
-    private void rectRenderInfo(Canvas canvas, RectRenderInfo r){
-        canvas.getImage().getGraphics().drawRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+    private void rectRenderInfo(Graphics2D graphics2D, RectRenderInfo r){
+        graphics2D.setColor(r.getColor());
+        graphics2D.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
     }
 
-    private void ovalRenderInfo(Canvas canvas, OvalRenderInfo r){
-        canvas.getImage().getGraphics().fillOval(r.getX(), r.getY(), r.getBallradius(), r.getBallradius());
+    private void ovalRenderInfo(Graphics2D graphics2D, OvalRenderInfo r){
+        graphics2D.setColor(r.getColor());
+        graphics2D.fillOval(r.getX(), r.getY(), r.getBallradius(), r.getBallradius());
     }
 
-    public void addRenderable(Renderable renderable){
-        this.renderable.add(renderable);
-    }
 
-    public void addRenderable(List<Renderable> renderable){
-        this.renderable.addAll(renderable);
-    }
+
 }

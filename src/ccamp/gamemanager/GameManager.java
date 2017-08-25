@@ -174,6 +174,7 @@ public class GameManager {
         ball.setSx(-ball.getSx());
     }
 
+
     public List<Block> updateGame() {
         for (Ball ball: ballList){
             ball.setX(ball.getX() + ball.getSx());

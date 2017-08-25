@@ -10,6 +10,8 @@ import ccamp.render.render.Renderer;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -61,25 +63,14 @@ public class Main {
 
         manage.addBallToList(ball);
 
-        window.addKeyListener(new KeyAdapter() {
+        window.addMouseMotionListener(new MouseAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
-                switch (e.getKeyChar()){
-                    case 'a' :
-                        if (player.getX()>10){
-                            player.setX(player.getX()-10);
-                        }
-                        break;
-                    case'd' :
-                        if (player.getX()<window.getWidth()-player.getWidth()){
-                            player.setX(player.getX()+10);
-                        }
-                        break;
-                }
+            public void mouseMoved(MouseEvent e) {
+                super.mouseMoved(e);
+                int mousePosition = e.getX();
+                player.setX(mousePosition);
             }
         });
-
 
         while (true){
             manage.updateGame();

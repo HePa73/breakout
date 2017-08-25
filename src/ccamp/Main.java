@@ -8,6 +8,7 @@ import ccamp.render.Window;
 import ccamp.render.render.Renderer;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
@@ -34,25 +35,12 @@ public class Main {
         for (int y = 0; isInCanvasY(y, 400, window); y += 40) {
             for (int x = 0; isInCanvasX(x, 0, window); x += 110) {
                 Block block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 100, 20);
-            }
-        }
-    }
-
-    public static void placeBlocks(GameManager manage) {
-        for(int y = 0; y != 1000; y += 100){
-            for(int x = 0; x != 1000; x += 100) {
-                Block block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 90, 10 );
 
                 manage.addToBlocklist(block);
             }
         }
     }
 
-    public static void addListToRender(List<Block> blockList, Renderer renderer) {
-        for (Block block: blockList){
-            renderer.addRenderable(block);
-        }
-    }
 
     public static void main(String[] args) {
         GameManager manage = new GameManager();
@@ -65,16 +53,11 @@ public class Main {
         manage.setPlayer(player);
 
         Renderer renderer = new Renderer();
-        renderer.addRenderable(player);
-        addListToRender(manage.getBlockList(), renderer);
-        Ball ball = new Ball(400,400,5,5,50,Color.RED);
-
-        renderer.addRenderable(ball);
-
-        Block block1 = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, 100, 400, 100, 100);
+        List<Renderable> renderables = manage.getRenderables();
+        Ball ball = new Ball(400,400,15,15,50,Color.RED);
 
 
-        renderer.renderScene(window.getCanvas());
+        renderer.renderScene(window.getCanvas(), renderables);
 
     }
 }

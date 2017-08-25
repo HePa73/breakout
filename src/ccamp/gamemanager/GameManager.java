@@ -2,6 +2,7 @@ package ccamp.gamemanager;
 
 import ccamp.Ball;
 import ccamp.Player.Player;
+import ccamp.Renderable;
 import ccamp.blocks.*;
 import ccamp.items.*;
 
@@ -155,5 +156,13 @@ public class GameManager {
         else{
             return true;
         }
+    }
+
+    public List<Renderable> getRenderables(){
+        List<Renderable> renderables = new LinkedList<>();
+        renderables.add(player);
+        renderables.addAll(ballList);
+        renderables.addAll(blockList);
+        return renderables;
     }
 }

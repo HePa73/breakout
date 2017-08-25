@@ -5,12 +5,10 @@ import ccamp.Player.Player;
 import ccamp.Renderable;
 import ccamp.blocks.*;
 import ccamp.items.*;
-import ccamp.render.render.Renderer;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-
 
 public class GameManager {
     Player player;

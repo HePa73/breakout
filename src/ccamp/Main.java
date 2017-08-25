@@ -12,8 +12,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
+    private static final Random rand = new Random();
 
     public static Boolean isInCanvasX(int x, int difference, Window window) {
         if (x <= (window.getWidth() - difference)){
@@ -36,7 +38,21 @@ public class Main {
     public static void placeBlocks(GameManager manage, Window window) {
         for (int y = 0; isInCanvasY(y, 400, window); y += 40) {
             for (int x = 0; isInCanvasX(x, 0, window); x += 110) {
-                Block block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 100, 20);
+                Block block = null;
+                switch (rand.nextInt(3)) {
+                    case 0:
+                        block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 100, 20);
+                        break;
+                    case 1:
+                        block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_DOWN, x, y, 100, 20);
+                        break;
+                    case 2:
+                        block = manage.spawnNewBlock(Block.BlockType.PLAYER_SIZE_DOWN, x, y, 100, 20);
+                        break;
+                    case 3:
+                        block = manage.spawnNewBlock(Block.BlockType.PLAYER_SIZE_UP, x, y, 100, 20);
+                        break;
+                }
                 manage.addToBlocklist(block);
             }
         }

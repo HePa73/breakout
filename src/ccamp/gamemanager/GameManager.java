@@ -148,7 +148,7 @@ public class GameManager {
     }
 
     public boolean isBlockCollision(Block block, Ball ball){
-        if (player.getX() < ball.getX() + ball.getRadius() * 2 && player.getX() + player.getWidth() > ball.getX() && player.getY() < ball.getY() + ball.getRadius() * 2 && player.getY() + player.getWidth() > ball.getY()){
+        if (block.getPosX() < ball.getX() + ball.getRadius() && block.getPosX() + block.getWidth() > ball.getX() && block.getPosY() < ball.getY() + ball.getRadius() && block.getPosY() + block.getHeight() > ball.getY()){
             return true;
         }
         else{
@@ -157,7 +157,7 @@ public class GameManager {
     }
 
     public boolean isPlayerCollision(Player player, Ball ball) {
-        if (player.getX() < ball.getX() + player.getWidth() && player.getX() + ball.getRadius() * 2 > ball.getX() && player.getY() < (ball.getRadius() * 2 + player.getWidth()) && player.getY() + player.getWidth() > ball.getY()) {
+        if (player.getX() < ball.getX() + ball.getRadius() && player.getX() + player.getWidth() > ball.getX() && player.getY() < (ball.getRadius() + ball.getY()) && player.getY() + player.getHeight() > ball.getY()) {
             return true;
         } else {
             return false;
@@ -174,6 +174,8 @@ public class GameManager {
 
     public List<Block> updateGame() {
         for (Ball ball: ballList){
+            ball.setX(ball.getX() + ball.getSx());
+            ball.setY(ball.getY() + ball.getSy());
             if (ball.getX() >= 1200){
                 negateBallSX(ball);
             }
@@ -197,6 +199,9 @@ public class GameManager {
             // Remove hit blocks from render list
             for (Block removeBlock: removeFromBlocklist){
                 blockList.remove(removeBlock);
+            }
+            if (isPlayerCollision(player, ball)){
+                negateBallSY(ball);
             }
         }
         return blockList;

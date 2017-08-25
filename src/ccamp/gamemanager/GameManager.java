@@ -55,6 +55,7 @@ public class GameManager {
 
     public GameManager() {
         this.ballList = new LinkedList<>();
+        this.blockList = new LinkedList<>();
         List <Block> blocklist;
 
     }
@@ -63,7 +64,7 @@ public class GameManager {
         blockList.add(block);
     }
 
-    public List getBlockList() {
+    public List<Block> getBlockList() {
         return blockList;
     }
 
@@ -140,7 +141,7 @@ public class GameManager {
     }
 
     public void constructGame() {
-        spawnNewBall();
+
     }
 
     public void setPlayer(Player player){

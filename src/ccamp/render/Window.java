@@ -6,13 +6,25 @@ import java.awt.*;
 
 public class Window extends JFrame {
     ccamp.render.Canvas canvas;
+    int width = 1200;
+    int height = 1000;
     public Window(){
-        this.setSize(1000, 1000);
-        canvas = new ccamp.render.Canvas(1000, 1000);
+        this.setSize(width, height);
+        canvas = new ccamp.render.Canvas(width, height);
         this.add(canvas, BorderLayout.CENTER);
 
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
     }
 
     public Canvas getCanvas(){

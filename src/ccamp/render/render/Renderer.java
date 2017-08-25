@@ -42,6 +42,7 @@ public class Renderer {
     private void rectRenderInfo(Graphics2D graphics2D, RectRenderInfo r){
         graphics2D.setColor(r.getColor());
         graphics2D.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+        graphics2D.drawRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
     }
 
     private void ovalRenderInfo(Graphics2D graphics2D, OvalRenderInfo r){

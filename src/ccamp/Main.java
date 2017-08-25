@@ -38,21 +38,24 @@ public class Main {
     }
 
     public static void placeBlocks(GameManager manage, Window window) {
-        for (int y = 0; isInCanvasY(y, 400, window); y += 40) {
+        int width = 100;
+        int height = 20;
+
+        for (int y = 0; isInCanvasY(y, 200, window); y += 50) {
             for (int x = 0; isInCanvasX(x, 0, window); x += 110) {
                 Block block = null;
                 switch (rand.nextInt(3)) {
                     case 0:
-                        block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, 100, 20);
+                        block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_UP, x, y, width, height);
                         break;
                     case 1:
-                        block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_DOWN, x, y, 100, 20);
+                        block = manage.spawnNewBlock(Block.BlockType.BALL_SPEED_DOWN, x, y, width, height);
                         break;
                     case 2:
-                        block = manage.spawnNewBlock(Block.BlockType.PLAYER_SIZE_DOWN, x, y, 100, 20);
+                        block = manage.spawnNewBlock(Block.BlockType.PLAYER_SIZE_DOWN, x, y, width, height);
                         break;
                     case 3:
-                        block = manage.spawnNewBlock(Block.BlockType.PLAYER_SIZE_UP, x, y, 100, 20);
+                        block = manage.spawnNewBlock(Block.BlockType.PLAYER_SIZE_UP, x, y, width, height);
                         break;
                 }
                 manage.addToBlocklist(block);
@@ -65,7 +68,6 @@ public class Main {
     public static void main(String[] args) {
         GameManager manage = new GameManager();
 
-        manage.updateGame();
         Window window = new Window();
 
         placeBlocks(manage, window);
@@ -75,7 +77,7 @@ public class Main {
 
         Renderer renderer = new Renderer();
 
-        Ball ball = new Ball(400,400,10, 10,20, Color.GREEN);
+        Ball ball = new Ball(400,640,10, 10,20, Color.GREEN);
 
         manage.addBallToList(ball);
 
@@ -89,7 +91,7 @@ public class Main {
         });
 
         while (true){
-            manage.updateGame();
+            manage.updateGame(window);
             List<Renderable> RenderList = new LinkedList<>();
             RenderList = manage.getRenderables();
             renderer.renderScene(window.getCanvas(), RenderList);

@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class Window extends JFrame {
     ccamp.render.Canvas canvas;
-    int width = 1200;
-    int height = 1000;
+    int width = 1000;
+    int height = 700;
     public Window(){
         this.setSize(width, height);
         canvas = new ccamp.render.Canvas(width, height);

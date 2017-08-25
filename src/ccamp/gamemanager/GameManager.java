@@ -5,6 +5,7 @@ import ccamp.Player.Player;
 import ccamp.Renderable;
 import ccamp.blocks.*;
 import ccamp.items.*;
+import ccamp.render.Window;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -173,20 +174,20 @@ public class GameManager {
     }
 
 
-    public List<Block> updateGame() {
+    public List<Block> updateGame(Window window) {
         for (Ball ball: ballList){
             ball.setX(ball.getX() + ball.getSx());
             ball.setY(ball.getY() + ball.getSy());
-            if (ball.getX() >= 1200){
+            if (ball.getX() >= window.getWidth()){
                 negateBallSX(ball);
             }
             if (ball.getX() <= 0){
                 negateBallSX(ball);
             }
-            if (ball.getY() <=0){
+            if (ball.getY() == 0){
                 negateBallSY(ball);
             }
-            if (ball.getY() > 1000){
+            if (ball.getY() == window.getHeight()){
                 negateBallSY(ball);
             }
             // Check for blocks collisions

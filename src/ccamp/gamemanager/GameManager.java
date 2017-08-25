@@ -59,6 +59,18 @@ public class GameManager {
 
     }
 
+    public void addToBlocklist(Block block) {
+        blockList.add(block);
+    }
+
+    public List getBlockList() {
+        return blockList;
+    }
+
+    public List getBallList() {
+        return ballList;
+    }
+
     public void decrementLife() {
         // Decrement life if player is not already dead
         if (!isGameOver()) {
@@ -92,11 +104,7 @@ public class GameManager {
         }
     }
 
-    public void spawnNewBall() {
-        // Spawns new ball at ballSpawnY and ballSpawnX
-        // Returns: Ball object
-        Ball ball = new Ball(ballSpawnX, ballSpawnY, ballSX, ballSY, ballRadius, Color.RED);
-
+    public void addBallToList(Ball ball) {
         ballList.add(ball);
     }
 
